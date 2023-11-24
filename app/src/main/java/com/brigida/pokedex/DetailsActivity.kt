@@ -23,6 +23,7 @@ import retrofit2.Response
 class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsBinding
+    var weakness : MutableSet<String> = mutableSetOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +54,6 @@ class DetailsActivity : AppCompatActivity() {
                                 tvNumber.text = "#${data.id}"
                             }
 
-                            var weakness : MutableSet<String> = mutableSetOf()
-
                             Picasso.get().load(data.sprites.other.officialArtwork.frontDefault).into(ivPokemon)
 
                             pbHp.progress = data.stats[0].baseStat
@@ -76,163 +75,47 @@ class DetailsActivity : AppCompatActivity() {
                             tvType1.text = data.types[0].type.name
 
                             when(data.types[0].type.name){
-                                "normal"-> {
-                                    weakness.addAll(listOf("Fighting"))
-                                    changeUiColor(R.color.normal, R.drawable.cv_name_bg_normal, R.drawable.normal_bg,R.drawable.normal, R.drawable.normal_cicle)
-                                }
-                                "fire"-> {
-                                    weakness.addAll(listOf("Ground", "Rock", "Water"))
-                                    changeUiColor(R.color.fire, R.drawable.cv_name_bg_fire, R.drawable.fire_bg,R.drawable.fire, R.drawable.fire_cicle)
-                                }
-                                "water"-> {
-                                    weakness.addAll(listOf("Grass", "Water"))
-                                    changeUiColor(R.color.water, R.drawable.cv_name_bg_water, R.drawable.water_bg,R.drawable.water, R.drawable.water_cicle)
-                                }
-                                "grass"-> {
-                                    weakness.addAll(listOf("Bug", "Fire", "Flying", "Poison", "Ice"))
-                                    changeUiColor(R.color.grass, R.drawable.cv_name_bg_grass, R.drawable.grass_bg,R.drawable.grass, R.drawable.grass_cicle)
-                                }
-                                "electric"-> {
-                                    weakness.addAll(listOf("Ground"))
-                                    changeUiColor(R.color.electric, R.drawable.cv_name_bg_electric, R.drawable.electric_bg,R.drawable.electric, R.drawable.electric_cicle)
-                                }
-                                "ice"-> {
-                                    weakness.addAll(listOf("Fire", "Fighting", "Steel", "Rock"))
-                                    changeUiColor(R.color.ice, R.drawable.cv_name_bg_ice, R.drawable.ice_bg,R.drawable.ice, R.drawable.ice_cicle)
-                                }
-                                "fighting"-> {
-                                    weakness.addAll(listOf("Fairy", "Flying", "Psychic"))
-                                    changeUiColor(R.color.fighting, R.drawable.cv_name_bg_fighting, R.drawable.fighting_bg,R.drawable.fighting, R.drawable.fighting_cicle)
-                                }
-                                "poison"-> {
-                                    weakness.addAll(listOf("Ground", "Psychic"))
-                                    changeUiColor(R.color.poison, R.drawable.cv_name_bg_poison, R.drawable.poison_bg,R.drawable.poison, R.drawable.poison_cicle)
-                                }
-                                "ground"-> {
-                                    weakness.addAll(listOf("Ice", "Water", "Grass"))
-                                    changeUiColor(R.color.ground, R.drawable.cv_name_bg_ground, R.drawable.ground_bg,R.drawable.ground, R.drawable.ground_cicle)
-                                }
-                                "flying"-> {
-                                    weakness.addAll(listOf("Electric", "Rock", "Ice"))
-                                    changeUiColor(R.color.flying, R.drawable.cv_name_bg_flying, R.drawable.flying_bg,R.drawable.flying, R.drawable.flying_cicle)
-                                }
-                                "psychic"-> {
-                                    weakness.addAll(listOf("Bug", "Dark", "Ghost"))
-                                    changeUiColor(R.color.psychic, R.drawable.cv_name_bg_psychic, R.drawable.psychic_bg,R.drawable.psychic, R.drawable.psychic_cicle)
-                                }
-                                "bug"-> {
-                                    weakness.addAll(listOf("Fire", "Flying", "Rock"))
-                                    changeUiColor(R.color.bug, R.drawable.cv_name_bg_bug, R.drawable.bug_bg,R.drawable.bug, R.drawable.bug_cicle)
-                                }
-                                "rock"-> {
-                                    weakness.addAll(listOf("Fighting", "Grass", "Ground", "Steel", "Water"))
-                                    changeUiColor(R.color.rock, R.drawable.cv_name_bg_rock, R.drawable.rock_bg,R.drawable.rock, R.drawable.rock_cicle)
-                                }
-                                "ghost"-> {
-                                    weakness.addAll(listOf("Dark", "Ghost"))
-                                    changeUiColor(R.color.ghost, R.drawable.cv_name_bg_ghost, R.drawable.ghost_bg,R.drawable.ghost, R.drawable.ghost_cicle)
-                                }
-                                "dragon"-> {
-                                    weakness.addAll(listOf("Dragon", "Fairy", "Ice"))
-                                    changeUiColor(R.color.dragon, R.drawable.cv_name_bg_dragon, R.drawable.dragon_bg,R.drawable.dragon, R.drawable.dragon_cicle)
-                                }
-                                "dark"-> {
-                                    weakness.addAll(listOf("Bug", "Fairy", "Fighting"))
-                                    changeUiColor(R.color.dark, R.drawable.cv_name_bg_dark, R.drawable.dark_bg,R.drawable.dark, R.drawable.dark_cicle)
-                                }
-                                "steel"-> {
-                                    weakness.addAll(listOf("Ground", "Fire", "Fighting"))
-                                    changeUiColor(R.color.steel, R.drawable.cv_name_bg_steel, R.drawable.steel_bg,R.drawable.steel, R.drawable.steel_cicle)
-                                }
-                                "fairy"-> {
-                                    weakness.addAll(listOf("Poison", "Steel"))
-                                    changeUiColor(R.color.fairy, R.drawable.cv_name_bg_fairy, R.drawable.fairy_bg,R.drawable.fairy, R.drawable.fairy_cicle)
-                                }
+                                "normal"-> changeUiColor(R.color.normal, R.drawable.cv_name_bg_normal, R.drawable.normal_bg,R.drawable.normal, R.drawable.normal_cicle, listOf("Fighting"))
+                                "fire"-> changeUiColor(R.color.fire, R.drawable.cv_name_bg_fire, R.drawable.fire_bg,R.drawable.fire, R.drawable.fire_cicle, listOf("Ground", "Rock", "Water"))
+                                "water"-> changeUiColor(R.color.water, R.drawable.cv_name_bg_water, R.drawable.water_bg,R.drawable.water, R.drawable.water_cicle, listOf("Grass", "Electric"))
+                                "grass"-> changeUiColor(R.color.grass, R.drawable.cv_name_bg_grass, R.drawable.grass_bg,R.drawable.grass, R.drawable.grass_cicle, listOf("Bug", "Fire", "Flying", "Poison", "Ice"))
+                                "electric"-> changeUiColor(R.color.electric, R.drawable.cv_name_bg_electric, R.drawable.electric_bg,R.drawable.electric, R.drawable.electric_cicle, listOf("Ground"))
+                                "ice"-> changeUiColor(R.color.ice, R.drawable.cv_name_bg_ice, R.drawable.ice_bg,R.drawable.ice, R.drawable.ice_cicle, listOf("Fire", "Fighting", "Steel", "Rock"))
+                                "fighting"-> changeUiColor(R.color.fighting, R.drawable.cv_name_bg_fighting, R.drawable.fighting_bg,R.drawable.fighting, R.drawable.fighting_cicle, listOf("Fairy", "Flying", "Psychic"))
+                                "poison"-> changeUiColor(R.color.poison, R.drawable.cv_name_bg_poison, R.drawable.poison_bg,R.drawable.poison, R.drawable.poison_cicle, listOf("Ground", "Psychic"))
+                                "ground"-> changeUiColor(R.color.ground, R.drawable.cv_name_bg_ground, R.drawable.ground_bg,R.drawable.ground, R.drawable.ground_cicle, listOf("Ice", "Water", "Grass"))
+                                "flying"-> changeUiColor(R.color.flying, R.drawable.cv_name_bg_flying, R.drawable.flying_bg,R.drawable.flying, R.drawable.flying_cicle, listOf("Electric", "Rock", "Ice"))
+                                "psychic"-> changeUiColor(R.color.psychic, R.drawable.cv_name_bg_psychic, R.drawable.psychic_bg,R.drawable.psychic, R.drawable.psychic_cicle, listOf("Bug", "Dark", "Ghost"))
+                                "bug"-> changeUiColor(R.color.bug, R.drawable.cv_name_bg_bug, R.drawable.bug_bg,R.drawable.bug, R.drawable.bug_cicle, listOf("Fire", "Flying", "Rock"))
+                                "rock"-> changeUiColor(R.color.rock, R.drawable.cv_name_bg_rock, R.drawable.rock_bg,R.drawable.rock, R.drawable.rock_cicle, listOf("Fighting", "Grass", "Ground", "Steel", "Water"))
+                                "ghost"-> changeUiColor(R.color.ghost, R.drawable.cv_name_bg_ghost, R.drawable.ghost_bg,R.drawable.ghost, R.drawable.ghost_cicle, listOf("Dark", "Ghost"))
+                                "dragon"-> changeUiColor(R.color.dragon, R.drawable.cv_name_bg_dragon, R.drawable.dragon_bg,R.drawable.dragon, R.drawable.dragon_cicle, listOf("Dragon", "Fairy", "Ice"))
+                                "dark"-> changeUiColor(R.color.dark, R.drawable.cv_name_bg_dark, R.drawable.dark_bg,R.drawable.dark, R.drawable.dark_cicle, listOf("Bug", "Fairy", "Fighting"))
+                                "steel"-> changeUiColor(R.color.steel, R.drawable.cv_name_bg_steel, R.drawable.steel_bg,R.drawable.steel, R.drawable.steel_cicle, listOf("Ground", "Fire", "Fighting"))
+                                "fairy"-> changeUiColor(R.color.fairy, R.drawable.cv_name_bg_fairy, R.drawable.fairy_bg,R.drawable.fairy, R.drawable.fairy_cicle, listOf("Poison", "Steel"))
                             }
 
                             if (data.types.size > 1) {
                                 tvType2.text = data.types[1].type.name
                                 when(data.types[1].type.name){
-                                    "normal"-> {
-                                        ivType2.setImageResource(R.drawable.normal)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.normal_cicle)
-                                    }
-                                    "fire"-> {
-                                        ivType2.setImageResource(R.drawable.fire)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.fire_cicle)
-                                    }
-                                    "water"-> {
-                                        ivType2.setImageResource(R.drawable.water)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.water_cicle)
-                                    }
-                                    "grass"-> {
-                                        ivType2.setImageResource(R.drawable.grass)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.grass_cicle)
-                                    }
-                                    "electric"-> {
-                                        ivType2.setImageResource(R.drawable.electric)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.electric_cicle)
-                                    }
-                                    "ice"-> {
-                                        ivType2.setImageResource(R.drawable.ice)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.ice_cicle)
-                                    }
-                                    "fighting"-> {
-                                        ivType2.setImageResource(R.drawable.fighting)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.fighting_cicle)
-                                    }
-                                    "poison"-> {
-                                        ivType2.setImageResource(R.drawable.poison)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.poison_cicle)
-                                    }
-                                    "ground"-> {
-                                        ivType2.setImageResource(R.drawable.ground)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.ground_cicle)
-                                    }
-                                    "flying"-> {
-                                        ivType2.setImageResource(R.drawable.flying)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.flying_cicle)
-                                    }
-                                    "psychic"-> {
-                                        ivType2.setImageResource(R.drawable.psychic)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.psychic_cicle)
-                                    }
-                                    "bug"-> {
-                                        ivType2.setImageResource(R.drawable.bug)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.bug_cicle)
-                                    }
-                                    "rock"-> {
-                                        weakness.addAll(listOf("Fighting", "Grass", "Ground", "Steel", "Water"))
-                                        ivType2.setImageResource(R.drawable.rock)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.rock_cicle)
-                                    }
-                                    "ghost"-> {
-                                        weakness.addAll(listOf("Dark", "Ghost"))
-                                        ivType2.setImageResource(R.drawable.ghost)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.ghost_cicle)
-                                    }
-                                    "dragon"-> {
-                                        weakness.addAll(listOf("Dragon", "Fairy", "Ice"))
-                                        ivType2.setImageResource(R.drawable.dragon)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.dragon_cicle)
-                                    }
-                                    "dark"-> {
-                                        weakness.addAll(listOf("Bug", "Fairy", "Fighting"))
-                                        ivType2.setImageResource(R.drawable.dark)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity,
-                                            R.drawable.dark_cicle
-                                        )
-                                    }
-                                    "steel"-> {
-                                        weakness.addAll(listOf("Ground", "Fire", "Fighting"))
-                                        ivType2.setImageResource(R.drawable.steel)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.steel_cicle)
-                                    }
-                                    "fairy"-> {
-                                        weakness.addAll(listOf("Poison", "Steel"))
-                                        ivType2.setImageResource(R.drawable.fairy)
-                                        ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, R.drawable.fairy_cicle)
-                                    }
+                                    "normal"-> type2Color(R.drawable.normal, R.drawable.normal_cicle, listOf("Fighting"))
+                                    "fire"-> type2Color(R.drawable.fire, R.drawable.fire_cicle, listOf("Ground", "Rock", "Water"))
+                                    "water"-> type2Color(R.drawable.water, R.drawable.water_cicle, listOf("Grass", "Electric"))
+                                    "grass"-> type2Color(R.drawable.grass, R.drawable.grass_cicle, listOf("Bug", "Fire", "Flying", "Poison", "Ice"))
+                                    "electric"-> type2Color(R.drawable.electric, R.drawable.electric_cicle, listOf("Ground"))
+                                    "ice"-> type2Color(R.drawable.ice, R.drawable.ice_cicle, listOf("Fire", "Fighting", "Steel", "Rock"))
+                                    "fighting"-> type2Color(R.drawable.fighting, R.drawable.fighting_cicle, listOf("Fairy", "Flying", "Psychic"))
+                                    "poison"-> type2Color(R.drawable.poison, R.drawable.poison_cicle, listOf("Ground", "Psychic"))
+                                    "ground"-> type2Color(R.drawable.ground, R.drawable.ground_cicle, listOf("Ice", "Water", "Grass"))
+                                    "flying"-> type2Color(R.drawable.flying, R.drawable.flying_cicle, listOf("Electric", "Rock", "Ice"))
+                                    "psychic"-> type2Color(R.drawable.psychic, R.drawable.psychic_cicle, listOf("Bug", "Dark", "Ghost"))
+                                    "bug"-> type2Color(R.drawable.bug, R.drawable.bug_cicle, listOf("Fire", "Flying", "Rock"))
+                                    "rock"-> type2Color(R.drawable.rock, R.drawable.rock_cicle, listOf("Fighting", "Grass", "Ground", "Steel", "Water"))
+                                    "ghost"-> type2Color(R.drawable.ghost, R.drawable.ghost_cicle, listOf("Dark", "Ghost"))
+                                    "dragon"-> type2Color(R.drawable.dragon, R.drawable.dragon_cicle,listOf("Dragon", "Fairy", "Ice"))
+                                    "dark"-> type2Color(R.drawable.dark, R.drawable.dark_cicle, listOf("Bug", "Fairy", "Fighting"))
+                                    "steel"-> type2Color(R.drawable.steel, R.drawable.steel_cicle, listOf("Ground", "Fire", "Fighting"))
+                                    "fairy"-> type2Color(R.drawable.fairy, R.drawable.fairy_cicle, listOf("Poison", "Steel"))
                                 }
                             } else {
                                 ivType2.isVisible = false
@@ -256,7 +139,16 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeUiColor(color: Int, cvNameBackground: Int, mainBackground: Int,typeImage: Int, typeBackground: Int) {
+    private fun type2Color(typeImage: Int, typeBackground: Int, weaknesses: List<String>){
+        weakness.addAll(weaknesses)
+        binding.apply {
+            ivType2.setImageResource(typeImage)
+            ivType2.background = AppCompatResources.getDrawable(this@DetailsActivity, typeBackground)
+        }
+    }
+
+    private fun changeUiColor(color: Int, cvNameBackground: Int, mainBackground: Int,typeImage: Int, typeBackground: Int, weaknesses: List<String>) {
+        weakness.addAll(weaknesses)
         binding.apply {
             clPokemonName.background = AppCompatResources.getDrawable(this@DetailsActivity, cvNameBackground)
             clDetails.background = AppCompatResources.getDrawable(this@DetailsActivity, mainBackground)
