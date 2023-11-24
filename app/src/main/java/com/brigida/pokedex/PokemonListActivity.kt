@@ -45,7 +45,10 @@ class PokemonListActivity : AppCompatActivity(), PokemonAdapter.OnItemClickListe
         val apiService = NetworkUtils.getRetrofitInstance().create(ApiInterface::class.java)
 
         lifecycleScope.launch(Dispatchers.Main) {
-            binding.animationView.visibility = View.VISIBLE
+            binding.apply {
+                animationPokeball.visibility = View.VISIBLE
+                animationLoading.visibility = View.VISIBLE
+            }
             try {
                 val response: Response<Pokemons> = apiService.listPokemons(offset, limit)
                 if (response.isSuccessful) {
@@ -78,7 +81,8 @@ class PokemonListActivity : AppCompatActivity(), PokemonAdapter.OnItemClickListe
             }
             finally {
                 binding.apply {
-                    animationView.visibility = View.GONE
+                    animationPokeball.visibility = View.GONE
+                    animationLoading.visibility = View.GONE
                     ivTitle.isVisible = true
                     tvGeneration.isVisible = true
                 }

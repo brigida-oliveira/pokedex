@@ -40,12 +40,16 @@ class DetailsActivity : AppCompatActivity() {
         val apiService = NetworkUtils.getRetrofitInstance().create(ApiInterface::class.java)
 
         lifecycleScope.launch(Dispatchers.Main) {
-
+            binding.apply {
+                animationPokeball.visibility = View.VISIBLE
+                animationLoading.visibility = View.VISIBLE
+            }
             try {
                 val response: Response<Pokemon> = apiService.getPokemon(number)
                 if (response.isSuccessful) {
                     val data = response.body()
                     binding.apply {
+                        constraintLayout.isVisible = true
                         if (data != null) {
                             tvName.text = data.name
                             if(data.id < 10) {
@@ -142,6 +146,11 @@ class DetailsActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 Log.e("error", e.message ?: "Unknown error")
+            } finally {
+                binding.apply {
+                    animationPokeball.visibility = View.GONE
+                    animationLoading.visibility = View.GONE
+                }
             }
         }
     }

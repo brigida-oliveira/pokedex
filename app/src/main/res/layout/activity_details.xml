@@ -12,6 +12,7 @@
         android:id="@+id/iv_title"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/guideline_title_b"
         app:layout_constraintEnd_toEndOf="@id/guideline_gen9_end"
         app:layout_constraintStart_toStartOf="@id/guideline_gen9_start"
@@ -57,11 +58,37 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_title"
         tools:srcCompat="@drawable/pokemon_art" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationPokeball"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="pokeprogress.json"
+            app:lottie_loop="true" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationLoading"
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loading.json"
+            app:lottie_loop="true" />
+    </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
+        android:visibility="invisible"
         android:background="@drawable/cv_details_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
