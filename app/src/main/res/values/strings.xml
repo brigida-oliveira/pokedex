@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Pokedex</string>
+    <string name="generation_1">Generation 1</string>
+    <string name="generation_2">Generation 2</string>
+    <string name="generation_3">Generation 3</string>
+    <string name="generation_4">Generation 4</string>
+    <string name="generation_5">Generation 5</string>
+    <string name="generation_6">Generation 6</string>
+    <string name="generation_7">Generation 7</string>
+    <string name="generation_8">Generation 8</string>
+    <string name="generation_9">Generation 9</string>
+</resources>
