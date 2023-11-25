@@ -10,6 +10,8 @@ Criei essa pokedex em Kotlin utilizando os seguintes recursos:
 - Recurso de terceiros:
   * SVGs dos tipos de pokemons: [pokemon-type-svg-icons](https://github.com/duiker101/pokemon-type-svg-icons)
   * Animação Lottie que roda enquanto o Retrofit carrega os dados na tela: [Pokeball loading animation](https://lottiefiles.com/animations/pokeball-loading-animation-RDRWQ7Fovt)
+  * Animação Lottie com o nome Loading: [Loading Animation](https://lottiefiles.com/animations/loading-animation-fU59RE2UNC) (troquei a cor da animação original)
+  * SVG de uma pokebola do SVG Repo: [Pokeball Pokemon SVG Vector](https://www.svgrepo.com/svg/276264/pokeball-pokemon)
 
 
 Além disso, me basei nos designs dos seguintes links para criar as telas do meu app:
