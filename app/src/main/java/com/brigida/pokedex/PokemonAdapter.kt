@@ -3,6 +3,9 @@ package com.brigida.pokedex
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -40,96 +43,24 @@ class PokemonAdapter(private val context: Context,private val pokemonList: Mutab
 
         holder.pokemonType1.text = pokemonList[position].types[0].type.name
         when(pokemonList[position].types[0].type.name){
-            "normal"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.normal))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.normal_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.normal)
-            }
-            "fire"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fire))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fire_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.fire)
-            }
-            "water"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.water))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.water_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.water)
-            }
-            "grass"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.grass))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.grass_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.grass)
-            }
-            "electric"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.electric))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.electric_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.electric)
-            }
-            "ice"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ice))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ice_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.ice)
-            }
-            "fighting"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fighting))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fighting_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.fighting)
-            }
-            "poison"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.poison))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.poison_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.poison)
-            }
-            "ground"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ground))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ground_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.ground)
-            }
-            "flying"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.flying))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.flying_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.flying)
-            }
-            "psychic"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.psychic))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.psychic_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.psychic)
-            }
-            "bug"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.bug))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.bug_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.bug)
-            }
-            "rock"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.rock))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.rock_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.rock)
-            }
-            "ghost"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ghost))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ghost_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.ghost)
-            }
-            "dragon"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.dragon))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.dragon_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.dragon)
-            }
-            "dark"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.dark))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.dark_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.dark)
-            }
-            "steel"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.steel))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.steel_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.steel)
-            }
-            "fairy"-> {
-                holder.pokemonType1Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fairy))
-                holder.pokemonBackground.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fairy_bg))
-                holder.pokemonIvType1.setImageResource(R.drawable.fairy)
-            }
+            "normal"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.normal, R.drawable.normal)
+            "fire"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fire, R.drawable.fire)
+            "water"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.water, R.drawable.water)
+            "grass"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.grass, R.drawable.grass)
+            "electric"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.electric, R.drawable.electric)
+            "ice"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ice, R.drawable.ice)
+            "fighting"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fighting, R.drawable.fighting)
+            "poison"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.poison, R.drawable.poison)
+            "ground"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ground, R.drawable.ground)
+            "flying"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.flying, R.drawable.flying)
+            "psychic"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.psychic, R.drawable.psychic)
+            "bug"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.bug, R.drawable.bug)
+            "rock"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.rock, R.drawable.rock)
+            "ghost"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ghost, R.drawable.ghost)
+            "dragon"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.dragon, R.drawable.dragon)
+            "dark"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.dark, R.drawable.dark)
+            "steel"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.steel, R.drawable.steel)
+            "fairy"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fairy, R.drawable.fairy)
         }
 
 
@@ -137,78 +68,24 @@ class PokemonAdapter(private val context: Context,private val pokemonList: Mutab
             holder.pokemonType2.text = pokemonList[position].types[1].type.name
             holder.pokemonType2Background.isVisible = true
             when(pokemonList[position].types[1].type.name){
-                "normal"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.normal))
-                    holder.pokemonIvType2.setImageResource(R.drawable.normal)
-                }
-                "fire"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fire))
-                    holder.pokemonIvType2.setImageResource(R.drawable.fire)
-                }
-                "water"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.water))
-                    holder.pokemonIvType2.setImageResource(R.drawable.water)
-                }
-                "grass"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.grass))
-                    holder.pokemonIvType2.setImageResource(R.drawable.grass)
-                }
-                "electric"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.electric))
-                    holder.pokemonIvType2.setImageResource(R.drawable.electric)
-                }
-                "ice"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ice))
-                    holder.pokemonIvType2.setImageResource(R.drawable.ice)
-                }
-                "fighting"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fighting))
-                    holder.pokemonIvType2.setImageResource(R.drawable.fighting)
-                }
-                "poison"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.poison))
-                    holder.pokemonIvType2.setImageResource(R.drawable.poison)
-                }
-                "ground"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ground))
-                    holder.pokemonIvType2.setImageResource(R.drawable.ground)
-                }
-                "flying"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.flying))
-                    holder.pokemonIvType2.setImageResource(R.drawable.flying)
-                }
-                "psychic"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.psychic))
-                    holder.pokemonIvType2.setImageResource(R.drawable.psychic)
-                }
-                "bug"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.bug))
-                    holder.pokemonIvType2.setImageResource(R.drawable.bug)
-                }
-                "rock"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.rock))
-                    holder.pokemonIvType2.setImageResource(R.drawable.rock)
-                }
-                "ghost"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.ghost))
-                    holder.pokemonIvType2.setImageResource(R.drawable.ghost)
-                }
-                "dragon"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.dragon))
-                    holder.pokemonIvType2.setImageResource(R.drawable.dragon)
-                }
-                "dark"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.dark))
-                    holder.pokemonIvType2.setImageResource(R.drawable.dark)
-                }
-                "steel"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.steel))
-                    holder.pokemonIvType2.setImageResource(R.drawable.steel)
-                }
-                "fairy"-> {
-                    holder.pokemonType2Background.setCardBackgroundColor(ContextCompat.getColor(context,R.color.fairy))
-                    holder.pokemonIvType2.setImageResource(R.drawable.fairy)
-                }
+                "normal"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.normal, R.drawable.normal)
+                "fire"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.fire, R.drawable.fire)
+                "water"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.water, R.drawable.water)
+                "grass"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.grass, R.drawable.grass)
+                "electric"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.electric, R.drawable.electric)
+                "ice"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.ice, R.drawable.ice)
+                "fighting"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.fighting, R.drawable.fighting)
+                "poison"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.poison, R.drawable.poison)
+                "ground"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.ground, R.drawable.ground)
+                "flying"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.flying, R.drawable.flying)
+                "psychic"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.psychic, R.drawable.psychic)
+                "bug"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.bug, R.drawable.bug)
+                "rock"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.rock, R.drawable.rock)
+                "ghost"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.ghost, R.drawable.ghost)
+                "dragon"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.dragon, R.drawable.dragon)
+                "dark"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.dark, R.drawable.dark)
+                "steel"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.steel, R.drawable.steel)
+                "fairy"-> changeType2Color(holder.pokemonType2Background, holder.pokemonIvType2, R.color.fairy, R.drawable.fairy)
             }
         } else {
             holder.pokemonType2Background.isVisible = false
@@ -234,4 +111,14 @@ class PokemonAdapter(private val context: Context,private val pokemonList: Mutab
         val pokemonIvType2 = binding.ivType2
     }
 
+    private fun changeType1ColorAndBackground(cvType: CardView, cvCard: CardView, ivType: ImageView, color: Int, image: Int) {
+        cvType.setCardBackgroundColor(ContextCompat.getColor(context,color))
+        cvCard.setCardBackgroundColor(ContextCompat.getColor(context,color))
+        ivType.setImageResource(image)
+    }
+
+    private fun changeType2Color(cvType: CardView, ivType: ImageView, color: Int, image: Int) {
+        cvType.setCardBackgroundColor(ContextCompat.getColor(context,color))
+        ivType.setImageResource(image)
+    }
 }
