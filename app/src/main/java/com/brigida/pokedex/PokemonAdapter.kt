@@ -43,24 +43,24 @@ class PokemonAdapter(private val context: Context,private val pokemonList: Mutab
 
         holder.pokemonType1.text = pokemonList[position].types[0].type.name
         when(pokemonList[position].types[0].type.name){
-            "normal"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.normal, R.drawable.normal)
-            "fire"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fire, R.drawable.fire)
-            "water"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.water, R.drawable.water)
-            "grass"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.grass, R.drawable.grass)
-            "electric"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.electric, R.drawable.electric)
-            "ice"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ice, R.drawable.ice)
-            "fighting"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fighting, R.drawable.fighting)
-            "poison"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.poison, R.drawable.poison)
-            "ground"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ground, R.drawable.ground)
-            "flying"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.flying, R.drawable.flying)
-            "psychic"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.psychic, R.drawable.psychic)
-            "bug"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.bug, R.drawable.bug)
-            "rock"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.rock, R.drawable.rock)
-            "ghost"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ghost, R.drawable.ghost)
-            "dragon"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.dragon, R.drawable.dragon)
-            "dark"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.dark, R.drawable.dark)
-            "steel"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.steel, R.drawable.steel)
-            "fairy"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fairy, R.drawable.fairy)
+            "normal"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.normal, R.drawable.normal, R.color.normal_bg)
+            "fire"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fire, R.drawable.fire, R.color.fire_bg)
+            "water"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.water, R.drawable.water, R.color.water_bg)
+            "grass"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.grass, R.drawable.grass, R.color.grass_bg)
+            "electric"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.electric, R.drawable.electric, R.color.electric_bg)
+            "ice"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ice, R.drawable.ice, R.color.ice_bg)
+            "fighting"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fighting, R.drawable.fighting, R.color.fighting_bg)
+            "poison"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.poison, R.drawable.poison, R.color.poison_bg)
+            "ground"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ground, R.drawable.ground, R.color.ground_bg)
+            "flying"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.flying, R.drawable.flying, R.color.flying_bg)
+            "psychic"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.psychic, R.drawable.psychic, R.color.psychic_bg)
+            "bug"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.bug, R.drawable.bug, R.color.bug_bg)
+            "rock"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.rock, R.drawable.rock, R.color.rock_bg)
+            "ghost"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.ghost, R.drawable.ghost, R.color.ghost_bg)
+            "dragon"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.dragon, R.drawable.dragon, R.color.dragon_bg)
+            "dark"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.dark, R.drawable.dark, R.color.dark_bg)
+            "steel"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.steel, R.drawable.steel, R.color.steel_bg)
+            "fairy"-> changeType1ColorAndBackground(holder.pokemonType1Background, holder.pokemonBackground, holder.pokemonIvType1, R.color.fairy, R.drawable.fairy, R.color.fairy_bg)
         }
 
 
@@ -111,9 +111,9 @@ class PokemonAdapter(private val context: Context,private val pokemonList: Mutab
         val pokemonIvType2 = binding.ivType2
     }
 
-    private fun changeType1ColorAndBackground(cvType: CardView, cvCard: CardView, ivType: ImageView, color: Int, image: Int) {
+    private fun changeType1ColorAndBackground(cvType: CardView, cvCard: CardView, ivType: ImageView, color: Int, image: Int, color2: Int) {
         cvType.setCardBackgroundColor(ContextCompat.getColor(context,color))
-        cvCard.setCardBackgroundColor(ContextCompat.getColor(context,color))
+        cvCard.setCardBackgroundColor(ContextCompat.getColor(context,color2))
         ivType.setImageResource(image)
     }
 
