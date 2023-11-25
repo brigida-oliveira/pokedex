@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import android.widget.ProgressBar
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.cardview.widget.CardView
-import androidx.core.graphics.BlendModeColorFilterCompat
-import androidx.core.graphics.BlendModeCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.brigida.pokedex.databinding.ActivityDetailsBinding
@@ -25,7 +22,7 @@ import retrofit2.Response
 class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsBinding
-    var weakness : MutableSet<String> = mutableSetOf()
+    private var weakness : MutableSet<String> = mutableSetOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,11 +50,11 @@ class DetailsActivity : AppCompatActivity() {
                         if (data != null) {
                             tvName.text = data.name
                             if(data.id < 10) {
-                                tvNumber.text = "#00${data.id}"
+                                "#00${data.id}".also { tvNumber.text = it }
                             } else if (data.id < 100) {
-                                tvNumber.text = "#0${data.id}"
+                                "#0${data.id}".also { tvNumber.text = it }
                             } else {
-                                tvNumber.text = "#${data.id}"
+                                "#${data.id}".also { tvNumber.text = it }
                             }
 
                             Picasso.get().load(data.sprites.other.officialArtwork.frontDefault).into(ivPokemon)
@@ -75,8 +72,8 @@ class DetailsActivity : AppCompatActivity() {
                             pbSpeed.progress = data.stats[5].baseStat
                             pbSpeed.max = 200
 
-                            tvWeight.text = "${data.weight/10.0}kg"
-                            tvHeight.text = "${data.height/10.0}m"
+                            "${data.weight/10.0}kg".also { tvWeight.text = it }
+                            "${data.height/10.0}m".also { tvHeight.text = it }
 
                             tvType1.text = data.types[0].type.name
 
@@ -168,28 +165,28 @@ class DetailsActivity : AppCompatActivity() {
     private fun weaknessesCards(){
         binding.apply {
             if(weakness.size < 2) {
-                weaknessesVisibility(true, false, false, false, false, false, false, false)
+                weaknessesVisibility(type2 = false, type3 = false, type4 = false, type5 = false, type6 = false, type7 = false, type8 = false)
             } else if(weakness.size < 3) {
-                weaknessesVisibility(true, true, false, false, false, false, false, false)
+                weaknessesVisibility(type2 = true, type3 = false, type4 = false, type5 = false, type6 = false, type7 = false, type8 = false)
             } else if(weakness.size < 4) {
-                weaknessesVisibility(true, true, true, false, false, false, false, false)
+                weaknessesVisibility(type2 = true, type3 = true, type4 = false, type5 = false, type6 = false, type7 = false, type8 = false)
             } else if(weakness.size < 5) {
-                weaknessesVisibility(true, true, true, true, false, false, false, false)
+                weaknessesVisibility(type2 = true, type3 = true, type4 = true, type5 = false, type6 = false, type7 = false, type8 = false)
             } else if(weakness.size < 6) {
-                weaknessesVisibility(true, true, true, true, true, false, false, false)
+                weaknessesVisibility(type2 = true, type3 = true, type4 = true, type5 = true, type6 = false, type7 = false, type8 = false)
             } else if(weakness.size < 7) {
-                weaknessesVisibility(true, true, true, true, true, true, false, false)
+                weaknessesVisibility(type2 = true, type3 = true, type4 = true, type5 = true, type6 = true, type7 = false, type8 = false)
             } else if(weakness.size < 8) {
-                weaknessesVisibility(true, true, true, true, true, true, true, false)
+                weaknessesVisibility(type2 = true, type3 = true, type4 = true, type5 = true, type6 = true, type7 = true, type8 = false)
             } else {
-                weaknessesVisibility(true, true, true, true, true, true, true, true)
+                weaknessesVisibility(type2 = true, type3 = true, type4 = true, type5 = true, type6 = true, type7 = true, type8 = true)
             }
         }
     }
 
-    private fun weaknessesVisibility(type1: Boolean, type2: Boolean, type3: Boolean, type4: Boolean, type5: Boolean, type6: Boolean, type7: Boolean, type8: Boolean) {
+    private fun weaknessesVisibility(type2: Boolean, type3: Boolean, type4: Boolean, type5: Boolean, type6: Boolean, type7: Boolean, type8: Boolean) {
         binding.apply {
-            cvBackgroundWeaknessType1.isVisible = type1
+            cvBackgroundWeaknessType1.isVisible = true
             tvWeaknessType1.text = weakness.elementAtOrNull(0)
             verifyWeaknessType(weakness.elementAtOrNull(0).toString(), cvBackgroundWeaknessType1, ivWeaknessType1)
 

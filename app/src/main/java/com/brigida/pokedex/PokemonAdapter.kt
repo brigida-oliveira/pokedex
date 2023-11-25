@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -34,11 +33,11 @@ class PokemonAdapter(private val context: Context,private val pokemonList: Mutab
         holder.pokemonName.text = pokemonList[position].name
 
         if(pokemonList[position].id < 10) {
-            holder.pokemonNumber.text = "#00${pokemonList[position].id}"
+            "#00${pokemonList[position].id}".also { holder.pokemonNumber.text = it }
         } else if (pokemonList[position].id < 100) {
-            holder.pokemonNumber.text = "#0${pokemonList[position].id}"
+            "#0${pokemonList[position].id}".also { holder.pokemonNumber.text = it }
         } else {
-            holder.pokemonNumber.text = "#${pokemonList[position].id}"
+            "#${pokemonList[position].id}".also { holder.pokemonNumber.text = it }
         }
 
         holder.pokemonType1.text = pokemonList[position].types[0].type.name
@@ -91,7 +90,7 @@ class PokemonAdapter(private val context: Context,private val pokemonList: Mutab
             holder.pokemonType2Background.isVisible = false
         }
 
-        Picasso.get().load(pokemonList[position].sprites?.other?.officialArtwork?.frontDefault).into(holder.pokemonImage)
+        Picasso.get().load(pokemonList[position].sprites.other.officialArtwork.frontDefault).into(holder.pokemonImage)
 
         holder.pokemonBackground.setOnClickListener {
             itemClickListener?.onItemClick(pokemonList[position])
