@@ -1,6 +1,5 @@
 package com.brigida.pokedex.network
 
-import com.brigida.pokedex.model.DamageRelations
 import com.brigida.pokedex.model.Pokemon
 import com.brigida.pokedex.model.PokemonSpecies
 import com.brigida.pokedex.model.Pokemons
@@ -18,7 +17,4 @@ interface ApiInterface {
 
     @GET("pokemon-species/{number}")
     suspend fun getPokemonSpeciesDescription(@Path("number") number: Int): Response<PokemonSpecies>
-
-    @GET("type/{number}")
-    suspend fun getDamageRelations(@Path("number") number: Int): Response<DamageRelations>
 }
